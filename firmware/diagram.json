@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Smart Pet IoT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "gps-nmea",
+      "id": "gps",
+      "top": 90,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "led",
+      "id": "led",
+      "top": 90,
+      "left": 120,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "pushbutton",
+      "id": "button",
+      "top": 180,
+      "left": 0,
+      "attrs": {
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "resistor",
+      "id": "r1",
+      "top": 180,
+      "left": 120,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "potentiometer",
+      "id": "battery",
+      "top": 270,
+      "left": 0,
+      "attrs": {
+        "resistance": "10000"
+      }
+    }
+  ],
+  "connections": [
+    ["esp:TX0", "gps:RX", ""],
+    ["esp:RX0", "gps:TX", ""],
+    ["esp:2", "led:VN", ""],
+    ["esp:GND", "led:VSS", ""],
+    ["r1:1", "led:VSS", ""],
+    ["r1:2", "esp:GND", ""],
+    ["button:1", "esp:3V3", ""],
+    ["button:2", "esp:0", ""],
+    ["battery:O", "esp:34", ""],
+    ["battery:VCC", "esp:3V3", ""],
+    ["battery:GND", "esp:GND", ""]
+  ],
+  "dependencies": {}
+}
