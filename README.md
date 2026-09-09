@@ -56,14 +56,26 @@ Collar → MQTT → Backend → WebSocket → Mobile/Dashboard
 
 ## Getting Started
 
-1. Flash firmware to ESP32
-2. Set up MQTT broker
-3. Configure backend
-4. Pair collar with app
+1. `pio run -d firmware` and flash to the ESP32
+2. Join the `smartpet-<mac>` AP on first boot and provision (kennelId, deviceId,
+   Wi-Fi, MQTT host, claim password)
+3. Claim the collar from the Smart Pet console and set its safe zones
+
+## Firmware
+
+`firmware/main.cpp` is built on
+[smart-pet-device-sdk](https://github.com/jubasjl76-eng/smart-pet-device-sdk)
+and publishes `kennel/{kennelId}/gps/{deviceId}/location`. See
+`firmware/README.md`. The pre-SDK single-file firmware is kept as
+`firmware/collar-firmware.legacy.cpp`.
+
+The collar talks MQTT to
+[smart-pet-backend](https://github.com/jubasjl76-eng/smart-pet-backend);
+safe-zone / geofence logic lives there (Phase 9.2). The `backend/` folder in
+this repo (MongoDB models, an old MQTT consumer) is dead and will be removed.
 
 ## Files
 
-- `firmware/collar-firmware.cpp` - Device firmware
-- `backend/models/` - MongoDB schemas
-- `backend/services/mqttConsumer.ts` - MQTT handler
+- `firmware/main.cpp` - device firmware (SDK)
+- `firmware/collar-firmware.legacy.cpp` - pre-SDK firmware, kept for reference
 - `3d-design/collar-case.scad` - 3D printable case

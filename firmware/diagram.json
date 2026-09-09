@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "Smart Pet",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-gps", "id": "gps", "top": -120, "left": 140, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "batt", "top": 130, "left": -90, "attrs": { "value": "3000" } },
+    { "type": "wokwi-pushbutton", "id": "btn", "top": 130, "left": 120, "attrs": { "color": "green", "bounce": "0" } },
+    { "type": "wokwi-led", "id": "led", "top": 40, "left": 200, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 90, "left": 200, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:16", "gps:TX", "green", [] ],
+    [ "esp:17", "gps:RX", "blue", [] ],
+    [ "gps:VCC", "esp:3V3", "red", [] ],
+    [ "gps:GND", "esp:GND.1", "black", [] ],
+
+    [ "esp:34", "batt:SIG", "orange", [] ],
+    [ "batt:VCC", "esp:3V3", "red", [] ],
+    [ "batt:GND", "esp:GND.2", "black", [] ],
+
+    [ "esp:0", "btn:1.l", "green", [] ],
+    [ "btn:2.l", "esp:GND.2", "black", [] ],
+
+    [ "esp:2", "r1:1", "green", [] ],
+    [ "r1:2", "led:A", "green", [] ],
+    [ "led:C", "esp:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}
