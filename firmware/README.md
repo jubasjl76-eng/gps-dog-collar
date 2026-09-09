@@ -20,10 +20,8 @@ still work.
 pio run -d firmware
 ```
 
-`platformio.ini` pins the SDK, forces `-std=gnu++17`, and uses `min_spiffs.csv`
-for A/B OTA. **Re-pin the SDK to a `main` SHA once
-`smart-pet-device-sdk#2` (publishLocation) merges** — it is currently pinned to
-the `feat/publish-location` branch.
+`platformio.ini` pins the SDK to a commit, forces `-std=gnu++17`, and uses
+`min_spiffs.csv` for A/B OTA.
 
 ## Wiring (diagram.json)
 
