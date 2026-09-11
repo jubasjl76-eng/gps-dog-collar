@@ -15,6 +15,8 @@
 #include <TinyGPS++.h>
 #include <ArduinoJson.h>
 
+void publishLocation(); // defined below; used before its definition
+
 // ============== CONFIGURATION ==============
 // WiFi
 const char* WIFI_SSID = "YOUR_WIFI_SSID";
